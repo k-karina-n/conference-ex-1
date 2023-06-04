@@ -21,7 +21,12 @@ To run this project locally, you need:
 ## Installing
 **Clone the repo**
 ```
-git clone git@github.com:k-karina-n/conference-ex-1.git
+git clone https://github.com/k-karina-n/conference-ex-1.git
+```
+**Make changes in config.php providing access to the database**
+```
+'username' => 'root',
+'password' => ' ', 
 ```
 
 **Open the console and go to a project root directory**
