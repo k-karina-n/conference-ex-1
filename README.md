@@ -15,6 +15,7 @@ To run this project locally, you need:
 
 - **PHP** >= 8.1.17
 - **Composer** >= 2.5.4 
+- **MariaDB** >= 10.5.19 
 
 *You can find the installation instructions for these dependencies on their respective websites.*
 
@@ -45,11 +46,14 @@ mv example.config.php config.php
 **Create database 'conference' with a table 'user'**
 ```
 mysql -u name -p
-
+```
+```
 CREATE DATABASE conference;
-
+```
+```
 USE conference;
-
+```
+```
 CREATE TABLE user (ID INTEGER PRIMARY KEY AUTO_INCREMENT, 
 first TEXT NOT NULL, last TEXT NOT NULL, 
 phone CHAR(18) NOT NULL, email VARCHAR(255) NOT NULL UNIQUE, 
@@ -60,6 +64,8 @@ title TEXT NOT NULL, description TEXT NOT NULL, date DATE NOT NULL);
 **Create dependencies**
 ```
 composer install
+```
+```
 composer dump-autoload
 ```
 
