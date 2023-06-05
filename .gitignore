@@ -1,3 +1,2 @@
 vendor/
-userPhoto/*
-/config.php
+config.php
