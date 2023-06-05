@@ -23,17 +23,38 @@ To run this project locally, you need:
 ```
 git clone https://github.com/k-karina-n/conference-ex-1.git
 ```
-**Create a folder 'userPhoto' in a root directory**
+**Open the console and go to a project root directory**
+```
+cd conference-ex-1
+```
 
-**Create database 'conference' and make it accessible by changing config.php**
+**Create a folder 'userPhoto' in a root directory**
+```
+mkdir userPhoto
+```
+
+**Change example.config.php to config.php**
+```
+mv example.config.php config.php
+```
+**Provide access to your database in config.php**
 ```
 'username' => 'root',
 'password' => ' ', 
 ```
-
-**Open the console and go to a project root directory**
+**Create database 'conference' with a table 'user'**
 ```
-cd conference-ex-1
+mysql -u name -p
+
+CREATE DATABASE conference;
+
+USE conference;
+
+CREATE TABLE user (ID INTEGER PRIMARY KEY AUTO_INCREMENT, 
+first TEXT NOT NULL, last TEXT NOT NULL, 
+phone CHAR(18) NOT NULL, email VARCHAR(255) NOT NULL UNIQUE, 
+country TEXT NOT NULL, photo VARCHAR(255) NOT NULL, 
+title TEXT NOT NULL, description TEXT NOT NULL, date DATE NOT NULL);
 ```
 
 **Create dependencies**
