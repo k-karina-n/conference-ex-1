@@ -3,8 +3,8 @@
 2-page website to register for a virtual conference. 
 
 - Written in plain PHP without a framework 
-- Styled with TailwindCSS
-- Used AlpineJS, HTMX 
+- Styled with [TailwindCSS](https://tailwindcss.com/)
+- Used [AlpineJS](https://alpinejs.dev/), [HTMX](https://htmx.org/) 
 - Followed MVC architectural pattern
 
 ## Getting Started
@@ -23,7 +23,9 @@ To run this project locally, you need:
 ```
 git clone https://github.com/k-karina-n/conference-ex-1.git
 ```
-**Make changes in config.php providing access to the database**
+**Create a folder 'userPhoto' in a root directory**
+
+**Create database 'conference' and make it accessible by changing config.php**
 ```
 'username' => 'root',
 'password' => ' ', 
