@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\{Validator, Register};
+use App\Models\Validator;
+use App\Models\Register;
 
 
 class RegistrationController
@@ -10,23 +11,23 @@ class RegistrationController
     public function registration()
     {
         $errors = [
-            'input' => Validator::input($_POST),
-            'phone' => Validator::phone($_POST['phone']),
-            'email' => Validator::email($_POST['email']),
-            'date' => Validator::date($_POST['date']),
+            'input' => Validator::input(),
+            'phone' => Validator::phone(),
+            'email' => Validator::email(),
+            'date' => Validator::date(),
         ];
 
         foreach ($errors as $error) {
-            if (!$error == 0) {
+            if ($error) {
                 return view('registration', compact('errors'));
             }
         }
 
         Register::upload();
 
-        $title = ucwords($_POST['title']);
-
-        return view('shareOnSocialMedia', compact('title'));
+        return view('shareOnSocialMedia', [
+            'title' => ucwords($_POST['title'])
+        ]);
     }
 
     public function shareOnSocialMedia()

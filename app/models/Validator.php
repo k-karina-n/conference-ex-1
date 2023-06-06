@@ -7,36 +7,36 @@ use App\Core\App;
 class Validator
 {
 
-    public static function input($post) //global $_POST
+    public static function input()
     {
-        foreach ($post as $input) {
+        foreach ($_POST as $input) {
             if (strlen(trim($input)) == 0) {
-                return 'PLease, fill in all fields';
+                return 'Please, fill in all fields';
             }
         }
     }
 
-    public static function phone($value)
+    public static function phone()
     {
-        if (strlen($value) < 18) {
+        if (strlen($_POST['phone']) < 18) {
             return 'Provide full phone number';
         }
     }
 
-    public static function email($value)
+    public static function email()
     {
         $usedEmails = App::get('database')->selectInfo('email', 'user');
 
         foreach ($usedEmails as $email) {
-            if ($email['email'] === $value) {
+            if ($email['email'] === $_POST['email']) {
                 return 'Email is already used';
             }
         }
     }
 
-    public static function date($value)
+    public static function date()
     {
-        if ($value < date('Y-m-d')) {
+        if ($_POST['date'] < date('Y-m-d')) {
             return 'Date - not earlier than today';
         }
     }
