@@ -6,7 +6,12 @@ use App\Core\App;
 
 class Register
 {
-    public static function upload()
+    /**
+     * Uploads photo and inserts data into table
+     * 
+     * @return void
+     */
+    public static function upload(): void
     {
 
         $filename = $_FILES["file"]["name"];

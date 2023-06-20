@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Returns database configuration options including the host, database name, username, password and PDO options.
+ *
+ * @return array
+ */
 return [
     'database' => [
         'name' => 'conference',

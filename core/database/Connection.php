@@ -2,7 +2,14 @@
 
 class Connection
 {
-    public static function make($config)
+    /**
+     * Creates database connection
+     * 
+     * @param array $config
+     * 
+     * @return PDO
+     */
+    public static function make(array $config): PDO
     {
         try {
             return new PDO(

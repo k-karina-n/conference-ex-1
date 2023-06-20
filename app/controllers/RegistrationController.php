@@ -8,7 +8,12 @@ use App\Models\Register;
 
 class RegistrationController
 {
-    public function registration()
+    /**
+     * Validates data and uploads it into Database
+     * 
+     * @return mixed
+     */
+    public function registration(): mixed
     {
         $errors = [
             'input' => Validator::input(),
@@ -30,13 +35,23 @@ class RegistrationController
         ]);
     }
 
-    public function shareOnSocialMedia()
+    /**
+     * Returns 'Congratulations' part of registration form
+     * 
+     * @return mixed
+     */
+    public function shareOnSocialMedia(): mixed
     {
         return view('congratulations');
     }
 
-    public function congratulations()
+    /**
+     * Redirects the user to the Conference List page after registration
+     * 
+     * @return void
+     */
+    public function congratulations(): void
     {
-        return header("Location: /list");
+        redirect('list');
     }
 }

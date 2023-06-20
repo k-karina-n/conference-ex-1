@@ -7,23 +7,40 @@ use App\Core\App;
 class Validator
 {
 
-    public static function input()
+    /**
+     * Checks that all inputs in the registration form have data
+     * 
+     * @return string|null
+     */
+    public static function input(): ?string
     {
         foreach ($_POST as $input) {
             if (strlen(trim($input)) == 0) {
                 return 'Please, fill in all fields';
             }
+            return null;
         }
     }
 
-    public static function phone()
+    /**
+     * Validates the phone number length
+     * 
+     * @return string|null
+     */
+    public static function phone(): ?string
     {
         if (strlen($_POST['phone']) < 18) {
             return 'Provide full phone number';
         }
+        return null;
     }
 
-    public static function email()
+    /**
+     * Validates email uniqueness
+     * 
+     * @return string|null
+     */
+    public static function email(): ?string
     {
         $usedEmails = App::get('database')->selectInfo('email', 'user');
 
@@ -32,12 +49,19 @@ class Validator
                 return 'Email is already used';
             }
         }
+        return null;
     }
 
-    public static function date()
+    /**
+     * Validates date
+     * 
+     * @return string|null
+     */
+    public static function date(): ?string
     {
         if ($_POST['date'] < date('Y-m-d')) {
             return 'Date - not earlier than today';
         }
+        return null;
     }
 }

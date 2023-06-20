@@ -8,24 +8,52 @@ App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
 ));
 
-function urlIS($value)
+/**
+ * Check if the current URI matches the given one
+ * 
+ * @param string $uri
+ * 
+ * @return bool 
+ */
+function isURI(string $uri): bool
 {
-    return $_SERVER['REQUEST_URI'] === $value;
+    return $_SERVER['REQUEST_URI'] === $uri;
 }
 
-function view($name, $data = [])
+/**
+ * Renders a view file and passes data to it.
+ * 
+ * @param string $name
+ * @param array $data
+ * 
+ * @return mixed
+ */
+function view(string $name, array $data = []): mixed
 {
     extract($data);
-
     return require "app/views/{$name}.view.php";
 }
 
-function redirect($path)
+/**
+ * Redirects a user.
+ * 
+ * @param string $path
+ * 
+ * @return void
+ */
+function redirect(string $path): void
 {
-    header("Location: /{$path}");
+    die(header("Location: /{$path}"));
 }
 
-function dd($value)
+/**
+ * Dumps information about a value
+ * 
+ * @param mixed $value
+ * 
+ * @return void
+ */
+function dd(mixed $value): void
 {
     echo "<pre>";
     die(var_dump($value));
